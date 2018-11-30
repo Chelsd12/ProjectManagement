@@ -1,11 +1,21 @@
-<h1><%= @list.name %></h1>
-<ul>
-<% @tasks.each do |task| %>
-    <li>
-        <%= task.name %>
-    </li>
-<% end %>
-</ul>
-
-<%= link_to "Add a Task to this List", new_list_task_path(@list) %><br />
-<%= link_to 'Delete this List', board_list_path(@board, @list), method: :delete %>
+<div class="row">
+<div class="col s12 m6">
+  <div class="card deep-purple lighten-2">
+    <div class="card-content white-text">
+      <span class="card-title"><%= @list.name %></span>
+        <ul>
+            <% @tasks.each do |task| %>
+                <li>
+                    <%= link_to task.name, list_task_path(@list, task) %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <div class="card-action">
+      <a href="#"><%= link_to "Add a Task to this List", new_list_task_path(@list) %></a>
+      <a href="#"><%= link_to 'Delete this List', board_list_path(@board, @list), method: :delete %></a>
+      <a href="#"><%= link_to 'Back', boards_path %></a>
+    </div>
+  </div>
+</div>
+</div>

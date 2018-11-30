@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task , only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_list
 
   def index
@@ -29,6 +29,9 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @board = Board.find(@list.board_id)
+    @task.destroy
+    redirect_to board_list_path(@board, @list)
   end
 
   private
@@ -41,6 +44,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :description, :priority)
   end
 end

@@ -1,1 +1,2 @@
 <h1><%= @task.name %></h1>
+<%= link_to 'Delete this Task', list_task_path(@list, @task), method: :delete %>

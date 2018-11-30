@@ -8,14 +8,17 @@
     </nav>
 </div>
 </html>
-
-<ul>
-    <% @boards.each do |board| %>
-        <li>
-            <%= link_to board.name, board %>
-        </li>
-    <% end %>
-</ul>
+<div class="container">
+    <ul>
+        <% @boards.each do |board| %>
+            <li>
+                <div>
+                <%= link_to board.name, board %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>
 <%= link_to "Add Board", new_board_path %><br />
 <br />
 
